@@ -1,0 +1,22 @@
+{
+  "name": "todolist",
+  "version": "1.0.0",
+  "description": "To do list Odin Projet",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "webpack": "webpack --watch",
+    "build": "webpack"
+  },
+  "keywords": [
+    "todolist"
+  ],
+  "author": "Enrique Hidalgo",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^6.8.1",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
