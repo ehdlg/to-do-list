@@ -1,6 +1,7 @@
 import Project from './project';
 import ToDo from './todo';
 
+//Default values for the project and todo objects if there is no localStorage data
 const defaultProject = new Project('Default');
 const defaultTodo = new ToDo(
   'Programming',
@@ -12,7 +13,7 @@ const defaultTodo = new ToDo(
  * Function that returns the projects stored in localStorage. First, it checks if
  * there are any projects stored with the invocation of checkStorage. Once it is sure that
  * the local storage is set, that information is retrieved with JSON.parse().
- * For each project, it is set the Project prototype, and for each ToDo oject inside
+ * For each project, it is set the Project prototype, and for each ToDo object inside
  * the todoList array of the project object, the ToDo prototype is set.
  *
  * @returns Projects list stored in localStorage
@@ -40,7 +41,7 @@ export function updateStorage(updatedProjects) {
 }
 
 /**
- * Check if the itemm 'projects' is set in localStorage. If it is not, that key
+ * Check if the item 'projects' is set in localStorage. If it is not, that key
  * is created with the default values for project and todo objects.
  */
 function checkStorage() {
