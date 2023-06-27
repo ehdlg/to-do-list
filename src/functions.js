@@ -1,10 +1,10 @@
-import { getProjectsFromLocal } from './localstorage';
+import { getProjectsFromLocal, updateStorage } from './localstorage';
 import Project from './project';
 import ToDo from './todo';
 
 export function isProjectNameDuplicate(name) {
   const projects = getProjectsFromLocal();
-  console.log(projects);
+  return projects.some((project) => project.name === name);
 }
 
 export function setPrototypeObjects(projects) {
@@ -14,4 +14,16 @@ export function setPrototypeObjects(projects) {
       Object.setPrototypeOf(todo, ToDo.prototype)
     );
   });
+}
+
+export function addNewProject(projectName) {
+  try {
+    const newProject = new Project(projectName);
+    const projectsLocal = getProjectsFromLocal();
+    projectsLocal.push(newProject);
+    updateStorage(projectsLocal);
+    console.log(projectsLocal);
+  } catch (e) {
+    alert(e);
+  }
 }
