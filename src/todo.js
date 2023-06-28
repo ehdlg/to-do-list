@@ -1,3 +1,9 @@
+const priorities = {
+  1: 'High',
+  2: 'Medium',
+  3: 'Low',
+};
+
 export default class ToDo {
   constructor(title, description, dueDate, priority) {
     this.title = title;
@@ -7,13 +13,34 @@ export default class ToDo {
   }
 
   get title() {
-    return 'The title is: ' + this._title;
+    return this._title;
   }
 
   set title(newTitle) {
-    if (newTitle.length > 5) {
-      throw new Error('The title must be less than 5 characters long');
-    }
     this._title = newTitle;
+  }
+
+  get description() {
+    return this._description;
+  }
+
+  set description(newDescription) {
+    this._description = newDescription;
+  }
+
+  get dueDate() {
+    return this._dueDate;
+  }
+
+  set dueDate(newDate) {
+    this._dueDate = newDate;
+  }
+
+  get priority() {
+    return this._priority;
+  }
+
+  set priority(newPriority) {
+    this._priority = newPriority;
   }
 }
