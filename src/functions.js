@@ -22,8 +22,24 @@ export function addNewProject(projectName) {
     const projectsLocal = getProjectsFromLocal();
     projectsLocal.push(newProject);
     updateStorage(projectsLocal);
-    console.log(projectsLocal);
   } catch (e) {
     alert(e);
   }
 }
+
+export function deleteProject(projectName) {
+  const projects = getProjectsFromLocal();
+  let projectFound = false;
+  for (let i = 0; i < projects.length; i++) {
+    if (projects[i].name === projectName) {
+      projects.splice(i, 1);
+      projectFound = true;
+      updateStorage(projects);
+    }
+  }
+  if (!projectFound) {
+    alert(`Project ${projectName} not found`);
+  }
+}
+
+export function addNewTodo() {}
