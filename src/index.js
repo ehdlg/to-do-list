@@ -15,7 +15,11 @@ btnSubmitProject.addEventListener('click', function () {
 
 deleteProjectBtns.forEach((deleteBtn) => {
   deleteBtn.addEventListener('click', function () {
-    if (confirm('Are you sure you want to delete this project?')) {
+    if (
+      confirm(
+        `Are you sure you want to delete the ${this.dataset.projectname} project?`
+      )
+    ) {
       deleteProject(this.dataset.projectname);
       removeElement(this.parentNode);
     }
