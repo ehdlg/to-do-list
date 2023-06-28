@@ -1,4 +1,5 @@
 import ToDo from './todo';
+import { isProjectNameDuplicate } from './functions';
 
 export default class Project {
   constructor(name) {
@@ -11,6 +12,9 @@ export default class Project {
   }
 
   set name(newName) {
+    if (isProjectNameDuplicate(newName)) {
+      throw new Error('The project already exists.');
+    }
     this._name = newName;
   }
 
