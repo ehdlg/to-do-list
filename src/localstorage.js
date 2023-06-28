@@ -1,33 +1,18 @@
-import Project from './project';
-import ToDo from './todo';
+import { setPrototypeObjects } from './functions';
 
-//Default values for the project and todo objects if there is no localStorage data
-const defaultProject = new Project('Default');
-const defaultTodo = new ToDo(
-  'Programming',
-  'Write some code',
-  '06-30-2023',
-  'High'
-);
 /**
  * Function that returns the projects stored in localStorage. First, it checks if
  * there are any projects stored with the invocation of checkStorage. Once it is sure that
  * the local storage is set, that information is retrieved with JSON.parse().
- * For each project, it is set the Project prototype, and for each ToDo object inside
- * the todoList array of the project object, the ToDo prototype is set.
+ * The prototypes of the projects and ToDo objects are set with the function
+ * setPrototypeObjest imported from ./functions.js
  *
  * @returns Projects list stored in localStorage
  */
 export function getProjectsFromLocal() {
   checkStorage();
   let projects = JSON.parse(localStorage.getItem('projects'));
-  projects.forEach((project) => {
-    Object.setPrototypeOf(project, Project.prototype);
-    project.todoList.forEach((todo) =>
-      Object.setPrototypeOf(todo, ToDo.prototype)
-    );
-  });
-
+  setPrototypeObjects(projects);
   return projects;
 }
 
